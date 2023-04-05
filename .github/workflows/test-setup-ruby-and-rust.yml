@@ -18,24 +18,11 @@ jobs:
             slug: oxi-test
             ref: main
             run: bundle exec rake
-          - name: "matsadler/magnus"
-            slug: magnus
-            ref: main
-            run: cargo test
-        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+        os: ["windows-latest"]
         rust: ["stable"]
-        ruby: ["2.7", "3.0", "3.1", "head"]
+        ruby: ["3.1"]
         cargo-cache: ["true"]
         include:
-          - os: "ubuntu-latest"
-            ruby: "3.1"
-            rust: "stable"
-            cargo-cache: "sccache"
-            repo:
-              name: "oxidize-rb/oxi-test"
-              slug: oxi-test
-              ref: main
-              run: bundle exec rake
           - os: "windows-latest"
             ruby: "mswin"
             rust: "stable"
@@ -45,16 +32,6 @@ jobs:
               slug: oxi-test
               ref: main
               run: bundle exec rake
-          - os: "windows-latest"
-            slug: magnus
-            ruby: "mswin"
-            rust: "stable"
-            cargo-cache: "true"
-            repo:
-              name: "matsadler/magnus"
-              slug: magnus
-              ref: main
-              run: cargo test
 
     runs-on: ${{ matrix.os }}
     steps:

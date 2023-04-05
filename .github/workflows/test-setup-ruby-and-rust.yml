@@ -61,5 +61,7 @@ jobs:
         env:
           SETUP_OUTPUTS: ${{ toJSON(steps.setup.outputs) }}
         run: ruby ./tmp/actions/setup-ruby-and-rust/test.rb -v
-      - name: Run tests for ${{ matrix.repo.name }}
-        run: ${{ matrix.repo.run }}
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+      #- name: Run tests for ${{ matrix.repo.name }}
+        #run: ${{ matrix.repo.run }}
